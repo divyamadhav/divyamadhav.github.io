@@ -227,22 +227,42 @@ padding: 0;
 display: flex;
 flex-direction: column;
 gap: 0.9rem;
+margin-bottom: 3cm;
 }
 
-ul.activity-list li {
-font-size: 0.98rem;
-line-height: 1.5;
-padding-left: 1rem;
-border-left: 2px solid var(--rust);
+ul.activity-list li.activity {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  padding: 0.4rem 0 0.4rem 1rem;
+  border-left: 2px solid var(--rust);
+  cursor: default;
 }
 
-ul.activity-list li .role {
-font-weight: 600;
-color: var(--ink);
+ul.activity-list li.activity .role {
+  font-weight: 600;
+  color: var(--ink);
 }
 
-ul.activity-list li .org {
-color: var(--ink-soft);
+ul.activity-list li.activity .org {
+  color: var(--ink-soft);
+}
+
+ul.activity-list li.activity .activity-detail {
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.25s ease;
+}
+
+ul.activity-list li.activity:hover .activity-detail,
+ul.activity-list li.activity:focus-within .activity-detail {
+  max-height: 9rem;
+  opacity: 1;
+  margin-top: 0.4rem;
 }
 
 /* ---------- Small screens: allow scroll, stack header ---------- */
