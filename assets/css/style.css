@@ -1,0 +1,256 @@
+
+:root{
+--paper: #EDE6D6;
+--paper-deep: #E4DBC6;
+--ink: #2B2A28;
+--ink-soft: #59564C;
+--rust: #8C3B2E;
+--rust-deep: #6E2E23;
+--line: #C9BFA8;
+--sage: #6B7060;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+margin: 0;
+height: 100%;
+overflow: hidden;
+background: var(--paper);
+color: var(--ink);
+font-family: 'Work Sans', sans-serif;
+}
+
+body {
+display: flex;
+flex-direction: column;
+height: 100vh;
+width: 100vw;
+}
+
+/* ---------- Header: top half ---------- */
+
+header {
+flex: 0 0 auto;
+display: flex;
+align-items: center;
+gap: 2.5rem;
+padding: 3rem clamp(1.5rem, 6vw, 5rem) 2rem;
+border-bottom: 1px solid var(--line);
+min-height: 0;
+}
+
+.portrait {
+flex: 0 0 auto;
+width: clamp(96px, 14vw, 168px);
+height: clamp(96px, 14vw, 168px);
+border-radius: 6px;
+background: var(--paper-deep) url('../../images/profile-pic.jpeg') center/cover no-repeat;
+border: 1px solid var(--line);
+position: relative;
+}
+
+.portrait::after {
+/* shows only if the image fails to load / is a placeholder */
+content: "photo";
+position: absolute;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.8rem;
+color: var(--ink-soft);
+letter-spacing: 0.02em;
+background: var(--paper-deep);
+border-radius: 6px;
+z-index: -1;
+}
+
+.intro h1 {
+font-family: 'Newsreader', serif;
+font-weight: 500;
+font-size: clamp(1.9rem, 3.4vw, 3rem);
+margin: 0 0 0.3rem;
+line-height: 1.05;
+}
+
+.intro .tagline {
+font-family: 'Newsreader', serif;
+font-style: italic;
+font-size: clamp(1rem, 1.6vw, 1.25rem);
+color: var(--rust-deep);
+margin: 0 0 0.75rem;
+}
+
+.intro p.desc {
+max-width: 62ch;
+font-size: 0.98rem;
+line-height: 1.55;
+color: var(--ink-soft);
+margin: 0;
+}
+
+/* ---------- Folder tabs ---------- */
+
+nav.tabs {
+flex: 0 0 auto;
+display: flex;
+gap: 0.4rem;
+padding: 1.1rem clamp(1.5rem, 6vw, 5rem) 0;
+background: var(--paper);
+}
+
+nav.tabs button {
+font-family: 'Work Sans', sans-serif;
+font-size: 0.92rem;
+font-weight: 500;
+color: var(--ink-soft);
+background: var(--paper-deep);
+border: 1px solid var(--line);
+border-bottom: none;
+border-radius: 8px 8px 0 0;
+padding: 0.65rem 1.4rem 0.55rem;
+cursor: pointer;
+position: relative;
+top: 1px;
+transition: color 0.15s ease, background 0.15s ease;
+}
+
+nav.tabs button:hover {
+color: var(--ink);
+}
+
+nav.tabs button.active {
+background: #fff;
+color: var(--rust-deep);
+border-color: var(--line);
+}
+
+/* ---------- Content area: bottom half ---------- */
+
+main {
+flex: 1 1 auto;
+background: #fff;
+border-top: 1px solid var(--line);
+padding: 2rem clamp(1.5rem, 6vw, 5rem);
+overflow-y: auto;
+min-height: 0;
+}
+
+section.panel {
+display: none;
+height: 100%;
+}
+
+section.panel.active {
+display: block;
+}
+
+section.panel h2 {
+font-family: 'Newsreader', serif;
+font-weight: 500;
+font-size: 1.3rem;
+margin: 0 0 1.2rem;
+color: var(--rust-deep);
+}
+
+/* Contacts list */
+ul.contact-list {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 0.9rem;
+}
+
+ul.contact-list li a {
+display: flex;
+align-items: center;
+gap: 0.8rem;
+color: var(--ink);
+text-decoration: none;
+font-size: 0.98rem;
+}
+
+ul.contact-list li a i {
+width: 1.3rem;
+text-align: center;
+color: var(--rust);
+font-size: 1.05rem;
+}
+
+ul.contact-list li a:hover {
+color: var(--rust-deep);
+}
+
+/* News list */
+ul.news-list {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+ul.news-list li {
+display: grid;
+grid-template-columns: 7rem 1fr;
+gap: 1rem;
+padding-bottom: 0.9rem;
+border-bottom: 1px solid var(--line);
+}
+
+ul.news-list li:last-child {
+border-bottom: none;
+}
+
+ul.news-list .date {
+font-family: 'Newsreader', serif;
+font-style: italic;
+color: var(--sage);
+font-size: 0.9rem;
+white-space: nowrap;
+}
+
+ul.news-list .entry {
+font-size: 0.96rem;
+line-height: 1.45;
+}
+
+/* Extracurriculars list */
+ul.activity-list {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 0.9rem;
+}
+
+ul.activity-list li {
+font-size: 0.98rem;
+line-height: 1.5;
+padding-left: 1rem;
+border-left: 2px solid var(--rust);
+}
+
+ul.activity-list li .role {
+font-weight: 600;
+color: var(--ink);
+}
+
+ul.activity-list li .org {
+color: var(--ink-soft);
+}
+
+/* ---------- Small screens: allow scroll, stack header ---------- */
+
+@media (max-width: 640px) {
+html, body { overflow-y: auto; height: auto; }
+header { flex-direction: column; align-items: flex-start; text-align: left; padding: 2rem 1.25rem 1.5rem; }
+nav.tabs { padding: 1rem 1.25rem 0; overflow-x: auto; }
+main { padding: 1.5rem 1.25rem; }
+ul.news-list li { grid-template-columns: 1fr; gap: 0.2rem; }
+}
